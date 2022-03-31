@@ -1,5 +1,9 @@
+import JoinButton from "../JoinButton";
 import LogoComplete from "../LogoComplete";
 import SearchBar from "../SearchBar";
+import { FaEllipsisH } from "react-icons/fa";
+import SmallTriangle from "../SmallTriangle";
+import DropdownElements from "../DropdownElements";
 
 function Navbar() {
   return (
@@ -47,11 +51,24 @@ function Navbar() {
           className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
           id="mobile-menu-3"
         >
-          <ul className="flex flex-col mt-4 lg:flex-row lg:space-x-8 lg:mt-0 ">
+          <ul className="flex flex-col mt-4 items-center lg:flex-row lg:gap-10 lg:mt-0 ">
             <li>
-              <a href="#" className="block text-white text-lg">
+              <div href="#" className="relative text-white text-lg">
                 Explore
-              </a>
+                <SmallTriangle top={"-4.5px"} right={"22px"} />
+                <DropdownElements
+                  elements={[
+                    "Discover Photos",
+                    "Popular Searches",
+                    "Leaderboard",
+                    "Challenges",
+                    "Free Videos",
+                    "Pexels Blog",
+                  ]}
+                  top={10}
+                  right={0}
+                />
+              </div>
             </li>
             <li>
               <a href="#" className="block text-white text-lg">
@@ -65,13 +82,11 @@ function Navbar() {
             </li>
             <li>
               <a href="#" className="block text-white text-lg">
-                ...
+                <FaEllipsisH />
               </a>
             </li>
-            <li>
-              <a href="#" className="block text-white text-lg font-medium">
-                Join
-              </a>
+            <li className="lg:-mr-3">
+              <JoinButton />
             </li>
           </ul>
         </div>
