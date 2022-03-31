@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import JoinButton from "../JoinButton";
 import LogoComplete from "../LogoComplete";
 import SearchBar from "../SearchBar";
@@ -6,6 +7,11 @@ import SmallTriangle from "../SmallTriangle";
 import DropdownElements from "../DropdownElements";
 
 function Navbar() {
+  const [onHoverExplore, setOnHoverExplore] = useState(false);
+
+  function handleHover(state) {
+    setOnHoverExplore(state);
+  }
   return (
     <nav className="fixed top-0 left-0 right-0 flex items-center bg-black px-[16.1px] min-h-[66px] z-30">
       <div className="container flex justify-around md:justify-between items-center mx-auto">
@@ -53,21 +59,36 @@ function Navbar() {
         >
           <ul className="flex flex-col mt-4 items-center lg:flex-row lg:gap-10 lg:mt-0 ">
             <li>
-              <div href="#" className="relative text-white text-lg">
-                Explore
-                <SmallTriangle top={"-4.5px"} right={"22px"} />
-                <DropdownElements
-                  elements={[
-                    "Discover Photos",
-                    "Popular Searches",
-                    "Leaderboard",
-                    "Challenges",
-                    "Free Videos",
-                    "Pexels Blog",
-                  ]}
-                  top={10}
-                  right={0}
-                />
+              {/* onMouseEnter sets the onHoverExplore state to true so as to show the dropdown
+              onMouset */}
+              <div
+                href="#"
+                className="relative text-white"
+                onMouseOver={() => handleHover(true)}
+                onMouseLeave={() => handleHover(false)}
+              >
+                <a className="block text-white text-lg cursor-pointer">
+                  Explore
+                </a>
+                {/* This is for the dropdown that show when explore is hovered */}
+                {onHoverExplore && (
+                  <div>
+                    <SmallTriangle top={9} right={3} />
+                    <DropdownElements
+                      dropdown="explore"
+                      elements={[
+                        "Discover Photos",
+                        "Popular Searches",
+                        "Leaderboard",
+                        "Challenges",
+                        "Free Videos",
+                        "Pexels Blog",
+                      ]}
+                      top={9}
+                      right={0}
+                    />
+                  </div>
+                )}
               </div>
             </li>
             <li>
@@ -81,9 +102,36 @@ function Navbar() {
               </a>
             </li>
             <li>
-              <a href="#" className="block text-white text-lg">
-                <FaEllipsisH />
-              </a>
+              <div
+                href="#"
+                className="relative text-white"
+                onMouseEnter={() => handleHover(true)}
+                onMouseOut={() => handleHover(false)}
+              >
+                <a href="#" className="block text-white text-lg">
+                  <FaEllipsisH />
+                </a>
+                {true && (
+                  <div>
+                    <SmallTriangle top={0} right={3} />
+                    <DropdownElements
+                      dropdown="..."
+                      elements={[
+                        "Login",
+                        "Join",
+                        "Change Language",
+                        "Image & Video API",
+                        "App & Plugins",
+                        "FAQ",
+                        "Partnerships",
+                        "Imprint & Terms",
+                      ]}
+                      top={9}
+                      right={0}
+                    />
+                  </div>
+                )}
+              </div>
             </li>
             <li className="lg:-mr-3">
               <JoinButton />
