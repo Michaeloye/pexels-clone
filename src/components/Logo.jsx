@@ -2,22 +2,13 @@ import React from "react";
 
 function Logo() {
   return (
-    <div
-      style={{
-        // display: "-webkit-box",
-        display: "flex",
-        WebkitBoxAlign: "center",
-        alignItems: "center",
-        WebkitBoxPack: "center",
-        justifyContent: "center",
-      }}
-    >
+    <div className="flex items-center justify-center">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="32"
         height="32"
         viewBox="0 0 32 32"
-        className="border-8 h-[40px] w-[40px]"
+        className="rounded-[8px] w-[40px] h-[40px]"
       >
         <path
           fill="#05A081"
