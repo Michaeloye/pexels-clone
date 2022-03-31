@@ -17,7 +17,7 @@ function Navbar() {
     setOnHoverDot(state);
   }
   return (
-    <nav className="fixed top-0 left-0 right-0 flex items-center bg-black px-[16.1px] min-h-[66px] z-30">
+    <nav className="fixed top-0 left-0 right-0 flex items-center bg-transparent px-[16.1px] min-h-[66px] z-50">
       <div className="container flex justify-around md:justify-between items-center mx-auto">
         <LogoComplete />
         <SearchBar />
@@ -72,7 +72,7 @@ function Navbar() {
                 onMouseOver={() => handleExploreHover(true)}
                 onMouseLeave={() => handleExploreHover(false)}
               >
-                <a className="block text-white text-lg cursor-pointer">
+                <a className="block text-white text-lg cursor-pointer hover:opacity-90">
                   Explore
                 </a>
                 {/* This is for the dropdown that show when explore is hovered */}
@@ -102,12 +102,12 @@ function Navbar() {
               </div>
             </li>
             <li>
-              <a href="#" className="block text-white text-lg">
+              <a href="#" className="block text-white text-lg hover:opacity-90">
                 License
               </a>
             </li>
             <li>
-              <a href="#" className="block text-white text-lg">
+              <a href="#" className="block text-white text-lg hover:opacity-90">
                 Upload
               </a>
             </li>
@@ -118,7 +118,10 @@ function Navbar() {
                 onMouseOver={() => handleDotHover(true)}
                 onMouseLeave={() => handleDotHover(false)}
               >
-                <a href="#" className="block text-white text-lg">
+                <a
+                  href="#"
+                  className="block text-white text-lg hover:opacity-90"
+                >
                   <FaEllipsisH />
                 </a>
                 {onHoverDot && (
@@ -148,7 +151,8 @@ function Navbar() {
                 )}
               </div>
             </li>
-            <li className="lg:-mr-3">
+            {/* on hover of the join botton it should translate along the y-axis upward */}
+            <li className="lg:-mr-3 hover:opacity-90 hover:-translate-y-[1px]">
               <JoinButton />
             </li>
           </ul>
