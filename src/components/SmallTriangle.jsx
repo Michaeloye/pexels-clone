@@ -6,8 +6,8 @@ function SmallTriangle({ top, right }) {
   return (
     <div
       className={
-        "absolute w-[15px] h-[15px] bg-white rounded-sm " +
-        `top-[${top}] right-[${right}]`
+        "absolute w-[15px] h-[15px] bg-white rounded-sm top-9 right-5 " +
+        `top-['${top}'] right-['${right}']`
       }
       style={{
         content: '""',
