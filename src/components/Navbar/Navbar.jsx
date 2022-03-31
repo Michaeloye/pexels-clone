@@ -8,9 +8,13 @@ import DropdownElements from "../DropdownElements";
 
 function Navbar() {
   const [onHoverExplore, setOnHoverExplore] = useState(false);
+  const [onHoverDot, setOnHoverDot] = useState(false);
 
-  function handleHover(state) {
+  function handleExploreHover(state) {
     setOnHoverExplore(state);
+  }
+  function handleDotHover(state) {
+    setOnHoverDot(state);
   }
   return (
     <nav className="fixed top-0 left-0 right-0 flex items-center bg-black px-[16.1px] min-h-[66px] z-30">
@@ -53,6 +57,7 @@ function Navbar() {
             </svg>
           </button>
         </div>
+        {/* Larger display */}
         <div
           className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
           id="mobile-menu-3"
@@ -64,30 +69,35 @@ function Navbar() {
               <div
                 href="#"
                 className="relative text-white"
-                onMouseOver={() => handleHover(true)}
-                onMouseLeave={() => handleHover(false)}
+                onMouseOver={() => handleExploreHover(true)}
+                onMouseLeave={() => handleExploreHover(false)}
               >
                 <a className="block text-white text-lg cursor-pointer">
                   Explore
                 </a>
                 {/* This is for the dropdown that show when explore is hovered */}
                 {onHoverExplore && (
-                  <div>
-                    <SmallTriangle dropdown="explore" top={9} right={3} />
-                    <DropdownElements
-                      dropdown="explore"
-                      elements={[
-                        "Discover Photos",
-                        "Popular Searches",
-                        "Leaderboard",
-                        "Challenges",
-                        "Free Videos",
-                        "Pexels Blog",
-                      ]}
-                      top={9}
-                      right={0}
-                    />
-                  </div>
+                  <>
+                    {/* the below div is used because of the effect of hovering even directly above the 
+                    dropdown so as to mantain the hover effect */}
+                    <div className="absolute bg-transparent h-5 w-44 top-5 right-0"></div>
+                    <div>
+                      <SmallTriangle dropdown="explore" top={9} right={3} />
+                      <DropdownElements
+                        dropdown="explore"
+                        elements={[
+                          "Discover Photos",
+                          "Popular Searches",
+                          "Leaderboard",
+                          "Challenges",
+                          "Free Videos",
+                          "Pexels Blog",
+                        ]}
+                        top={9}
+                        right={0}
+                      />
+                    </div>
+                  </>
                 )}
               </div>
             </li>
@@ -105,31 +115,36 @@ function Navbar() {
               <div
                 href="#"
                 className="relative text-white"
-                onMouseEnter={() => handleHover(true)}
-                onMouseOut={() => handleHover(false)}
+                onMouseOver={() => handleDotHover(true)}
+                onMouseLeave={() => handleDotHover(false)}
               >
                 <a href="#" className="block text-white text-lg">
                   <FaEllipsisH />
                 </a>
-                {true && (
-                  <div>
-                    <SmallTriangle top={0} right={3} />
-                    <DropdownElements
-                      dropdown="..."
-                      elements={[
-                        "Login",
-                        "Join",
-                        "Change Language",
-                        "Image & Video API",
-                        "App & Plugins",
-                        "FAQ",
-                        "Partnerships",
-                        "Imprint & Terms",
-                      ]}
-                      top={9}
-                      right={0}
-                    />
-                  </div>
+                {onHoverDot && (
+                  <>
+                    {/* the below div is used because of the effect of hovering even directly above the 
+                    dropdown so as to mantain the hover effect */}
+                    <div className="absolute bg-transparent h-10 w-80 top-3 right-0"></div>
+                    <div>
+                      <SmallTriangle top={0} right={3} />
+                      <DropdownElements
+                        dropdown="..."
+                        elements={[
+                          "Login",
+                          "Join",
+                          "Change Language",
+                          "Image & Video API",
+                          "App & Plugins",
+                          "FAQ",
+                          "Partnerships",
+                          "Imprint & Terms",
+                        ]}
+                        top={9}
+                        right={0}
+                      />
+                    </div>
+                  </>
                 )}
               </div>
             </li>
