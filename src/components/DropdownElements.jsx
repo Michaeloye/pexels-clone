@@ -5,7 +5,7 @@ function DropdownElements({ dropdown, elements, top, right }) {
     return (
       <ul
         className={
-          `absolute block list-none m-0 py-2 mt-0 mb-0 text-[#5e5e5e] bg-white shadow w-44 top-8 right-0 `
+          `absolute block list-none m-0 py-2 mt-0 mb-0 text-[#5e5e5e] bg-white shadow w-44 top-9 right-0 `
           // `top-${top} right-${right}`
         }
       >
@@ -25,7 +25,7 @@ function DropdownElements({ dropdown, elements, top, right }) {
     return (
       <ul
         className={
-          `absolute block list-none m-0 py-2 mt-0 mb-0 text-[#5e5e5e] bg-white shadow w-96 top-6 ` +
+          `absolute block list-none m-0 py-2 mt-0 mb-0 text-[#5e5e5e] bg-white shadow w-96 top-8 ` +
           `top-${top} right-${right}`
         }
       >
