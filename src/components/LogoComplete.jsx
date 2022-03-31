@@ -20,7 +20,7 @@ function LogoComplete() {
       <Logo />
       {/* if Not on medium screen display text */}
       {!mediumScreen && (
-        <span className="self-center text-lg font-semibold whitespace-nowrap text-white hover:opacity-50">
+        <span className="self-center text-lg font-semibold whitespace-nowrap text-white hover:opacity-90">
           Pexels
         </span>
       )}
