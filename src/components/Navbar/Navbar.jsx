@@ -73,7 +73,7 @@ function Navbar() {
                 {/* This is for the dropdown that show when explore is hovered */}
                 {onHoverExplore && (
                   <div>
-                    <SmallTriangle top={9} right={3} />
+                    <SmallTriangle dropdown="explore" top={9} right={3} />
                     <DropdownElements
                       dropdown="explore"
                       elements={[
