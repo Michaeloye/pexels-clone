@@ -5,6 +5,7 @@ module.exports = {
       colors: {
         "primary-green": "#4fa282",
         "primary-blue": "#145adf",
+        "social-hover-gray": "#232a34",
       },
     },
   },
