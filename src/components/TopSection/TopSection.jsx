@@ -1,7 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import SearchBar from "../SearchBar";
+import axios from "axios";
 
 function TopSection() {
+  const [bgImageURL, setBgImageURL] = useState();
+  const [bgUser, setBgUser] = useState("");
+  const [bgUserPageURL, setBgUserPageURL] = useState("");
+
+  // function to get a random item from an array. it is required to show different background images
+  // so from the response of the api a random image is selected
+  function getRandomItem(arr) {
+    // get random index value
+    const randomIndex = Math.floor(Math.random() * arr.length);
+
+    // get random item
+    const item = arr[randomIndex];
+
+    return item;
+  }
+
+  useEffect(() => {
+    // The queris for the api are:
+    // image_type=photo
+    // category=backgrounds
+    axios
+      .get(
+        `https://pixabay.com/api/?key=${
+          import.meta.env.VITE_APIKEY
+        }&image_type=photo&category=backgrounds`
+      )
+      .then((res) => {
+        const data = getRandomItem(res.data.hits);
+        setBgImageURL(data["largeImageURL"]);
+        setBgUser(data["user"]);
+        setBgUserPageURL(data["pageURL"]);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <section
       className={
@@ -11,9 +47,9 @@ function TopSection() {
     >
       <div className="absolute top-0 left-0 right-0 bottom-0 w-full h-full overflow-hidden">
         <img
-          src="https://images.pexels.com/photos/8775535/pexels-photo-8775535.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;fp-y=0.5&amp;h=500&amp;sharp=10&amp;w=1400"
-          srcSet="https://images.pexels.com/photos/8775535/pexels-photo-8775535.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;fp-y=0.5&amp;h=500&amp;sharp=10&amp;w=350 350w,https://images.pexels.com/photos/8775535/pexels-photo-8775535.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;fp-y=0.5&amp;h=500&amp;sharp=10&amp;w=500 500w,https://images.pexels.com/photos/8775535/pexels-photo-8775535.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;fp-y=0.5&amp;h=500&amp;sharp=10&amp;w=1000 1000w,https://images.pexels.com/photos/8775535/pexels-photo-8775535.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;fp-y=0.5&amp;h=500&amp;sharp=10&amp;w=1500 1500w,https://images.pexels.com/photos/8775535/pexels-photo-8775535.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;fp-y=0.5&amp;h=500&amp;sharp=10&amp;w=2000 2000w,https://images.pexels.com/photos/8775535/pexels-photo-8775535.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;fp-y=0.5&amp;h=500&amp;sharp=10&amp;w=2500 2500w,https://images.pexels.com/photos/8775535/pexels-photo-8775535.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;fp-y=0.5&amp;h=500&amp;sharp=10&amp;w=3000 3000w,https://images.pexels.com/photos/8775535/pexels-photo-8775535.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;fp-y=0.5&amp;h=500&amp;sharp=10&amp;w=3500 3500w,https://images.pexels.com/photos/8775535/pexels-photo-8775535.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;fp-y=0.5&amp;h=500&amp;sharp=10&amp;w=4000 4000w,https://images.pexels.com/photos/8775535/pexels-photo-8775535.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;fp-y=0.5&amp;h=500&amp;sharp=10&amp;w=5000 5000w"
+          src={bgImageURL}
           className="w-full h-full object-cover bg-[#232a34]"
+          loading="lazy"
         />
       </div>
       {/* text and search */}
@@ -31,24 +67,42 @@ function TopSection() {
               <li className="text-sm hidden lg:inline-block ">
                 Suggested <span>:</span>
               </li>
-              <li className="inline-block">
+              <li className="inline-block overflow-x-auto">
                 <ul>
-                  {["space, green, sunlight, moon, beach, travel, more"].map(
-                    (topic) => (
-                      <li
-                        key={topic}
-                        className="text-sm leading-[18px] font-light inline-block opacity-80"
-                      >
-                        {topic}
-                      </li>
-                    )
-                  )}
+                  {[
+                    "space",
+                    "green",
+                    "sunlight",
+                    "moon",
+                    "beach",
+                    "travel",
+                    "more",
+                  ].map((topic) => (
+                    <li
+                      key={topic}
+                      className={
+                        "text-sm leading-[18px] font-light inline-block opacity-80 " +
+                        (topic === "space" ? "ml-0 lg:ml-2" : "ml-0")
+                      }
+                    >
+                      {topic}
+                      <span className={topic === "more" ? "hidden" : "mr-1"}>
+                        ,
+                      </span>
+                    </li>
+                  ))}
                 </ul>
               </li>
             </ul>
           </div>
         </div>
       </div>
+      <a
+        href={bgUserPageURL}
+        className="absolute text-xs hidden lg:inline-block lg:bottom-4 lg:right-5 lg:cursor-pointer lg:opacity-50 hover:opacity-100 z-30"
+      >
+        <span>Photo by {bgUser}</span>
+      </a>
     </section>
   );
 }
