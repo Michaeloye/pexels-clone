@@ -1,4 +1,5 @@
 import React from "react";
+import SearchBar from "../SearchBar";
 
 function TopSection() {
   return (
@@ -21,6 +22,32 @@ function TopSection() {
           The best free stock photos, royalty free images &amp; videos shared by
           creators.
         </h1>
+        {/* search and suggested */}
+        <div>
+          <SearchBar show={true} />
+          {/* suggested */}
+          <div className="flex justify-between items-center">
+            <ul className="flex relative items-center list-none whitespace-nowrap w-full m-0 py-2 px-0">
+              <li className="text-sm hidden lg:inline-block ">
+                Suggested <span>:</span>
+              </li>
+              <li className="inline-block">
+                <ul>
+                  {["space, green, sunlight, moon, beach, travel, more"].map(
+                    (topic) => (
+                      <li
+                        key={topic}
+                        className="text-sm leading-[18px] font-light inline-block opacity-80"
+                      >
+                        {topic}
+                      </li>
+                    )
+                  )}
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
   );
