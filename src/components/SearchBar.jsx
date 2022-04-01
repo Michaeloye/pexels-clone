@@ -1,9 +1,13 @@
 import React from "react";
 
 // This component is being used in like two places so the props are for better responsiveness
-function SearchBar({ placeholder, size }) {
+function SearchBar({ show, placeholder, size }) {
   return (
-    <div className="relative w-3/5 lg:w-1/2 lg:block">
+    <div
+      className={
+        "relative w-3/5 lg:w-1/2 lg:block " + (show ? "visible" : "invisible")
+      }
+    >
       <input
         type="text"
         id="email-adress-icon"
