@@ -12,7 +12,17 @@ function Tabs() {
           <Link
             key={element}
             to={element === "Home" ? "" : `/${element.toLowerCase()}`}
-            className="relative inline-flex text-[17px] leading-[26px] font-semibold mt-0 mb-0 tracking-[0.4px] items-center p-[17.5px] cursor-pointer no-underline"
+            // select text color based on route
+            className={
+              "relative inline-flex text-[17px] leading-[26px] font-semibold mt-0 mb-0 " +
+              "tracking-[0.4px] items-center p-[17.5px] cursor-pointer no-underline text-[#5e5e5e] " +
+              (element.toLowerCase() === "home" && location.slice(1) === ""
+                ? "text-primary-blue "
+                : " ") +
+              (element.toLowerCase() === location.slice(1)
+                ? "text-primary-blue"
+                : "")
+            }
           >
             {element}
             {/* home has to be done for specially because it has a route of '/' */}
