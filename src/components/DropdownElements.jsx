@@ -56,7 +56,7 @@ function DropdownElements({ dropdown, elements, top, right }) {
             <div className="flex justify-center ">
               {/* the numbers being mapped through represents the number of icons */}
               {[0, 1, 2, 3, 4].map((num) => (
-                <SocialHandle icon={num} />
+                <SocialHandle key={num} icon={num} />
               ))}
             </div>
           </div>
