@@ -1,12 +1,7 @@
 import React from "react";
-import TopSection from "../components/TopSection/TopSection";
 
 function Home() {
-  return (
-    <div>
-      <TopSection />
-    </div>
-  );
+  return <div>Home</div>;
 }
 
 export default Home;
