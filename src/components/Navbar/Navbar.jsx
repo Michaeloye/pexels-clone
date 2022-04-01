@@ -5,10 +5,16 @@ import SearchBar from "../SearchBar";
 import { FaEllipsisH } from "react-icons/fa";
 import SmallTriangle from "../SmallTriangle";
 import DropdownElements from "../DropdownElements";
+import useScroll from "../../hooks/useScroll";
 
 function Navbar() {
   const [onHoverExplore, setOnHoverExplore] = useState(false);
   const [onHoverDot, setOnHoverDot] = useState(false);
+  // This is a custom hook that returns the scroll position in the y-axis
+  const { scrollYPosition } = useScroll();
+
+  // based on the scroll postion the searchBar is to be displayed on the navbar
+  const [showSearchBar, setShowSearchBar] = useState(false);
 
   function handleExploreHover(state) {
     setOnHoverExplore(state);
@@ -16,11 +22,28 @@ function Navbar() {
   function handleDotHover(state) {
     setOnHoverDot(state);
   }
+
+  useEffect(() => {
+    // once scroll postion gets to this point the showSearchBar is set to true
+    if (scrollYPosition >= 105) {
+      setShowSearchBar(true);
+    } else {
+      setShowSearchBar(false);
+    }
+  }, [scrollYPosition]);
+
   return (
-    <nav className="fixed top-0 left-0 right-0 flex items-center bg-transparent px-[16.1px] min-h-[66px] z-50">
+    <nav
+      className={
+        "fixed top-0 left-0 right-0 flex items-center px-[16.1px] min-h-[66px] z-50 " +
+        (showSearchBar ? "bg-[#232a34]" : "bg-transparent")
+      }
+    >
       <div className="container flex justify-around md:justify-between items-center mx-auto">
         <LogoComplete />
-        <SearchBar />
+        {/* the searchBar postion is to be maintained so as to prevent UI shift thus base
+        on the show prop the style in the searchBar component will be set to display: none */}
+        <SearchBar show={showSearchBar} />
 
         <div className="flex">
           <button
