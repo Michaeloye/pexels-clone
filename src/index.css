@@ -22,3 +22,22 @@ body {
     linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0));
   z-index: 20;
 }
+.photo-item-overlay::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 80px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  z-index: 10;
+}
