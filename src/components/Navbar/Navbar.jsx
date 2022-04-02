@@ -153,7 +153,7 @@ function Navbar() {
                     dropdown so as to mantain the hover effect */}
                     <div className="absolute bg-transparent h-10 w-80 top-3 right-0"></div>
                     <div>
-                      <SmallTriangle top={0} right={3} />
+                      <SmallTriangle dropdown="..." top={0} right={3} />
                       <DropdownElements
                         dropdown="..."
                         elements={[
