@@ -17,7 +17,7 @@ function Home() {
       <div className="relative flex w-full">
         <div className="block flex-grow flex-shrink mr-[14px] md:mr-[20.3px]">
           <div className="mb-[14px] md:mb-[20.3px]">
-            <article className="photo-item-overlay pt-[149.7%] relative block z-0 before:opacity-30 md:before:opacity-0 ">
+            <article className="photo-item-overlay pt-[149.7%] relative block z-0 before:opacity-30 md:before:opacity-0 md:before:hover:opacity-100 ">
               <a className="bg-[rgb(32,32,32)] absolute top-0 left-0 bottom-0 right-0">
                 <img
                   src=""
