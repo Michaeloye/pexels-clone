@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import DropdownElements from "../components/DropdownElements";
 import SmallTriangle from "../components/SmallTriangle";
 
 function Home() {
+  const [onHover, setOnHover] = useState(false);
+  function handleHover(state) {
+    setOnHover(state);
+  }
   return (
     <main className="px-[14px] lg:px-7 m-auto max-w-[1440px] min-h-[1400px]">
       {/* title tabs */}
@@ -18,22 +22,27 @@ function Home() {
               "pl-[13px] text-sm font-semibold m-0 min-h-[32px] leading-6 text-[#1a1a1a] whitespace-nowrap " +
               "border border-transparent"
             }
+            onMouseOver={() => handleHover(true)}
+            onMouseLeave={() => handleHover(false)}
           >
             <span className="leading-6 whitespace-nowrap">Trending</span>
             <IoMdArrowDropdown />
-            <div>
-              {/* the below div is used because of the effect of hovering even directly above the 
-                    dropdown so as to mantain the hover effect */}
-              <div className="absolute bg-blue-900 h-10 w-40 top-5 right-0"></div>
-              <SmallTriangle dropdown="explore" top={9} right={3} />
+            {onHover && (
+              <>
+                {/* the below div is used because of the effect of hovering even directly above the 
+                dropdown so as to mantain the hover effect 
+                */}
+                <div className="absolute bg-transparent h-10 w-40 top-5 right-2"></div>
 
-              <DropdownElements
-                dropdown="trending"
-                elements={["Trending", "New"]}
-                top={9}
-                right={20}
-              />
-            </div>
+                <SmallTriangle dropdown="trending" top={9} right={3} />
+                <DropdownElements
+                  dropdown="trending"
+                  elements={["Trending", "New"]}
+                  top={9}
+                  right={20}
+                />
+              </>
+            )}
           </div>
         </div>
       </div>
