@@ -14,7 +14,7 @@ function Tabs() {
             to={element === "Home" ? "" : `/${element.toLowerCase()}`}
             // select text color based on route
             className={
-              "relative inline-flex text-[17px] leading-[26px] font-semibold mt-0 mb-0 " +
+              "relative inline-flex text-[17px] leading-[26px] font-semibold mt-0 mb-0 hover:text-primary-blue " +
               "tracking-[0.4px] items-center p-[17.5px] cursor-pointer no-underline text-[#5e5e5e] " +
               (element.toLowerCase() === "home" && location.slice(1) === ""
                 ? "text-primary-blue "
