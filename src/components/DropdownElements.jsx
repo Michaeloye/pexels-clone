@@ -1,8 +1,9 @@
 import React from "react";
 import SocialHandle from "./SocialHandle";
+import { Link, useLocation } from "react-router-dom";
 
 function DropdownElements({ dropdown, elements, top, right }) {
-  if (dropdown == "explore") {
+  if (dropdown === "explore") {
     return (
       <ul
         className={
@@ -22,7 +23,7 @@ function DropdownElements({ dropdown, elements, top, right }) {
         ))}
       </ul>
     );
-  } else {
+  } else if (dropdown === "...") {
     return (
       <>
         <ul
@@ -62,6 +63,47 @@ function DropdownElements({ dropdown, elements, top, right }) {
           </div>
         </ul>
       </>
+    );
+  } else {
+    // either 'trending' or 'new' has to be focused on based on the url pathname
+    // the style will based on the pathname
+    const location = useLocation().pathname;
+    return (
+      <ul
+        className={
+          `absolute block list-none m-0 py-2 mt-0 mb-0 text-[#5e5e5e] bg-white shadow w-44 top-9 right-0 `
+          // `top-${top} right-${right}`
+        }
+      >
+        {elements.map((element) => (
+          <li
+            key={element}
+            className={
+              "block text-base font-semibold hover:bg-gray-200 " +
+              (element.toLowerCase() === "trending" && location.slice(1) === ""
+                ? "bg-gray-200 "
+                : "") +
+              (element.toLowerCase() === location.slice(1) ? "bg-gray-200" : "")
+            }
+          >
+            <Link
+              to={element === "Trending" ? "" : `/${element.toLowerCase()}`}
+              className={
+                "block w-full h-full text-left py-2 px-4 cursor-pointer hover:text-[#1a1a1a] " +
+                (element.toLowerCase() === "trending" &&
+                location.slice(1) === ""
+                  ? "text-[#1a1a1a] "
+                  : "") +
+                (element.toLowerCase() === location.slice(1)
+                  ? "text-[#1a1a1a]"
+                  : "")
+              }
+            >
+              {element}
+            </Link>
+          </li>
+        ))}
+      </ul>
     );
   }
 }
