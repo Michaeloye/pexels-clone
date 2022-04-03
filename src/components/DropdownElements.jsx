@@ -71,7 +71,7 @@ function DropdownElements({ dropdown, elements, top, right }) {
     return (
       <ul
         className={
-          `absolute block list-none m-0 py-2 mt-0 mb-0 text-[#5e5e5e] bg-white shadow w-40 top-9 right-2 `
+          `absolute block list-none m-0 py-2 mt-0 mb-0 text-[#5e5e5e] bg-white shadow w-40 top-9 right-2 z-20`
           // `top-${top} right-${right}`
         }
       >
