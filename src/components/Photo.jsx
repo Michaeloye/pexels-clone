@@ -4,8 +4,9 @@ import { IoMdAddCircleOutline } from "react-icons/io";
 import { FiHeart } from "react-icons/fi";
 import UserDetails from "./UserDetails";
 
-function Photo({ imageURL }) {
+function Photo({ pageURL, imageURL, userImageURL, userName }) {
   const [onImageHover, setOnImageHover] = useState(false);
+
   function handleImageHover(state) {
     setOnImageHover(state);
   }
@@ -16,7 +17,7 @@ function Photo({ imageURL }) {
         onMouseOver={() => handleImageHover(true)}
         onMouseLeave={() => handleImageHover(false)}
       >
-        <a className="bg-[rgb(198,198,198)]">
+        <a href={pageURL} className="bg-[rgb(198,198,198)] h-12 max-h-fit">
           <img
             src={imageURL}
             className="block w-full max-w-full h-auto border-0"
@@ -25,7 +26,7 @@ function Photo({ imageURL }) {
         {/* poster details */}
         {onImageHover && (
           <>
-            <UserDetails />
+            <UserDetails userImageURL={userImageURL} userName={userName} />
             {/* download like others */}
             <div className="absolute flex bottom-0 right-0 pr-4 pb-4">
               <a className="opacity-80 w-10 delay-100 overflow-hidden z-20 p-0 cursor-pointer">
