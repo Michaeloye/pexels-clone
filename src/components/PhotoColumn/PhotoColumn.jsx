@@ -9,9 +9,19 @@ function PhotoColumn({ images, last }) {
       }
     >
       {images.map((image) => {
+        const pageURL = image["pageURL"];
         const imageURL = image["webformatURL"];
-        console.log(imageURL);
-        return <Photo imageURL={imageURL} />;
+        const userImageURL = image["userImageURL"];
+        const userName = image["user"];
+        return (
+          <Photo
+            key={pageURL}
+            pageURL={pageURL}
+            imageURL={imageURL}
+            userImageURL={userImageURL}
+            userName={userName}
+          />
+        );
       })}
     </div>
   );
