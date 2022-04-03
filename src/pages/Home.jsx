@@ -3,6 +3,7 @@ import TitleTabs from "../components/TitleTabs";
 import PhotoColumn from "../components/PhotoColumn/PhotoColumn";
 import useScreensize from "../hooks/useScreensize";
 import axios from "axios";
+import slice from "../utilities/slice";
 
 function Home() {
   const [data, setData] = useState([]);
@@ -17,7 +18,7 @@ function Home() {
       .get(
         `https://pixabay.com/api/?key=${
           import.meta.env.VITE_APIKEY
-        }&q=yellow+flowers&image_type=photo&pretty=true`
+        }&image_type=photo&safesearch=true`
       )
       .then((res) => setData(res.data["hits"]))
       .catch((err) => console.log(err.message));
@@ -42,14 +43,14 @@ function Home() {
         {/* 2 photo columns for medium screen 3 photo columns for large screen */}
         {mediumScreen ? (
           <>
-            <PhotoColumn images={data.slice(0, 5)} />
-            <PhotoColumn images={data.slice(5, 10)} last />
+            <PhotoColumn images={slice(data, 0, 20, 2)} />
+            <PhotoColumn images={slice(data, 1, 20, 2)} last />
           </>
         ) : (
           <>
-            <PhotoColumn images={data.slice(0, 5)} />
-            <PhotoColumn images={data.slice(5, 10)} />
-            <PhotoColumn images={data.slice(10, 15)} last />
+            <PhotoColumn images={slice(data, 0, 20, 3)} />
+            <PhotoColumn images={slice(data, 1, 20, 3)} />
+            <PhotoColumn images={slice(data, 2, 20, 3)} last />
           </>
         )}
       </div>
