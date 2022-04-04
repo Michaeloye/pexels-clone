@@ -1,9 +1,9 @@
 import React from "react";
 import avatar from "../assets/avatar.svg";
-function UserDetails({ userImageURL, userName }) {
+function UserDetails({ pageURL, userImageURL, userName }) {
   return (
     <a
-      href=""
+      href={pageURL}
       className="absolute bottom-0 left-0 pb-4 pl-4 no-underline text-white whitespace-nowrap cursor-pointer transition-opacity duration-200 delay-200 z-20"
       style={{ maxWidth: "calc(100% - 70px)" }}
     >
