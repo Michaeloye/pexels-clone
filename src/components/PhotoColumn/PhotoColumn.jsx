@@ -1,4 +1,7 @@
+import React from "react";
 import Photo from "../Photo";
+
+export const UserContext = React.createContext();
 
 function PhotoColumn({ images, last }) {
   return (
@@ -13,14 +16,21 @@ function PhotoColumn({ images, last }) {
         const imageURL = image["webformatURL"];
         const userImageURL = image["userImageURL"];
         const userName = image["user"];
+        const views = image["views"];
+        const likes = image["likes"];
+        const downloads = image["downloads"];
         return (
-          <Photo
+          <UserContext.Provider
             key={pageURL}
-            pageURL={pageURL}
-            imageURL={imageURL}
-            userImageURL={userImageURL}
-            userName={userName}
-          />
+            value={{ views, likes, downloads, userName, userImageURL }}
+          >
+            <Photo
+              pageURL={pageURL}
+              imageURL={imageURL}
+              userImageURL={userImageURL}
+              userName={userName}
+            />
+          </UserContext.Provider>
         );
       })}
     </div>
