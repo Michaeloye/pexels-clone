@@ -31,7 +31,7 @@ function SmallTriangle({ dropdown, top, right }) {
         }}
       ></div>
     );
-  } else {
+  } else if (dropdown === "trending") {
     return (
       <div
         className={
@@ -42,6 +42,23 @@ function SmallTriangle({ dropdown, top, right }) {
           WebkitTransform: "rotate(45deg)",
           transform: "rotate(45deg)",
           boxShadow: "-3px -3px 5px rgba(82,95,127,.04)",
+        }}
+      ></div>
+    );
+  } else {
+    return (
+      <div
+        className={
+          `absolute w-[15px] h-[15px] bg-white rounded-sm `
+          // `top-${top} right-${right}`
+        }
+        style={{
+          content: '""',
+          WebkitTransform: "rotate(45deg)",
+          transform: "rotate(45deg)",
+          boxShadow: "-3px -3px 5px rgba(82,95,127,.04)",
+          bottom: `${top}px`,
+          left: `${right}px`,
         }}
       ></div>
     );
