@@ -1,14 +1,44 @@
-import React from "react";
-import SmallTriangle from "./SmallTriangle";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import SpotlighCardProfile from "./SpotlightCard/SpolightCardProfile";
 import SpotlightCardPhoto from "./SpotlightCard/SpotlightCardPhoto";
 import SpotlightCardFooterItem from "./SpotlightCard/SpotlightCardFooterItem";
+import { UserContext } from "./PhotoColumn/PhotoColumn";
 
 function UserDropdown() {
+  // becaus this component is nested deeply useContext is used for easier passsing down of data
+  // user = {views, likes, downloads, userName, userImageURL}
+  const user = useContext(UserContext);
+
+  // For the purpose of responsiveness the spotlight profile card is observed to change position
+  // when offscreen, so the spotlightCardRef comes inhandy to know when it is offscreen
+  const spotlightCardRef = useRef(null);
+  const [inDisplayX, setInDisplayX] = useState();
+
+  useEffect(() => {
+    console.log(user);
+    // to determine how offscreen the card is
+    let elem = spotlightCardRef.current;
+    let rect = elem.getBoundingClientRect();
+    if (rect.x <= 75) {
+      setInDisplayX(false);
+    } else {
+      setInDisplayX(true);
+    }
+  }, [inDisplayX]);
   return (
-    <div className="absolute block min-w-[175px] z-20 bottom-20">
+    <div
+      ref={spotlightCardRef}
+      className="absolute block min-w-[175px] z-20 top-[-215px] right-0 delay-[5000]"
+      // custom style based on being offscreen or not
+      style={
+        !inDisplayX
+          ? {
+              right: `-320px`,
+            }
+          : {}
+      }
+    >
       <div className="relative w-full h-full mt-2 bg-white rounded-sm shadow-sm text-left">
-        <SmallTriangle />
         <div className="relative h-full w-full p-[14px] ">
           <div>
             <div className="w-80">
@@ -17,9 +47,9 @@ function UserDropdown() {
                 <div className="flex justify-between items-center max-w-full mb-[14px]">
                   {/* profile */}
                   <SpotlighCardProfile
-                    userImageURL=""
-                    userName="asdfas"
-                    followers="234"
+                    userImageURL={user.userImageURL}
+                    userName={user.userName}
+                    followers={"???"}
                   />
                   {/* Follow */}
                   <div className="ml-[14px]">
@@ -50,9 +80,15 @@ function UserDropdown() {
                 </div>
                 {/* spotlight card footer */}
                 <div className="flex">
-                  {[0, 1, 2].map((num) => (
-                    <SpotlightCardFooterItem key={num} icon={num} text={234} />
-                  ))}
+                  {[user.views, user.downloads, user.likes].map(
+                    (data, index) => (
+                      <SpotlightCardFooterItem
+                        key={data}
+                        icon={index}
+                        num={data}
+                      />
+                    )
+                  )}
                 </div>
               </article>
             </div>
