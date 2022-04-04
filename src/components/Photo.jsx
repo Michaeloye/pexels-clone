@@ -26,7 +26,11 @@ function Photo({ pageURL, imageURL, userImageURL, userName }) {
         {/* poster details */}
         {onImageHover && (
           <>
-            <UserDetails userImageURL={userImageURL} userName={userName} />
+            <UserDetails
+              pageURL={pageURL}
+              userImageURL={userImageURL}
+              userName={userName}
+            />
             {/* download like others */}
             <div className="absolute flex bottom-0 right-0 pr-4 pb-4">
               <a className="opacity-80 w-10 delay-100 overflow-hidden z-20 p-0 cursor-pointer">
