@@ -7,7 +7,7 @@ import SmallTriangle from "../SmallTriangle";
 import DropdownElements from "../DropdownElements";
 import useScroll from "../../hooks/useScroll";
 
-function Navbar() {
+function Navbar({ handleMobileNav }) {
   const [onHoverExplore, setOnHoverExplore] = useState(false);
   const [onHoverDot, setOnHoverDot] = useState(false);
   // This is a custom hook that returns the scroll position in the y-axis
@@ -36,7 +36,7 @@ function Navbar() {
     <nav
       className={
         "fixed top-0 left-0 right-0 flex items-center px-[16.1px] min-h-[66px] z-50 " +
-        (showSearchBar ? "bg-[#232a34]" : "bg-transparent")
+        (showSearchBar ? "bg-primary-black" : "bg-transparent")
       }
     >
       <div className="container flex justify-around md:justify-between items-center mx-auto">
@@ -49,11 +49,11 @@ function Navbar() {
           <button
             data-collapse-toggle="mobile-menu-3"
             type="button"
-            className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg lg:hidden focus:outline-none dark:text-gray-400"
             aria-controls="mobile-menu-3"
             aria-expanded="false"
+            onClick={handleMobileNav}
           >
-            <span className="sr-only">Open main menu</span>
             <svg
               className="w-6 h-6"
               fill="currentColor"
