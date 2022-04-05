@@ -15,7 +15,6 @@ function UserDropdown() {
   const [inDisplayX, setInDisplayX] = useState();
 
   useEffect(() => {
-    console.log(user);
     // to determine how offscreen the card is
     let elem = spotlightCardRef.current;
     let rect = elem.getBoundingClientRect();
