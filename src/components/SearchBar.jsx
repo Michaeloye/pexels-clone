@@ -19,11 +19,7 @@ function SearchBar({ show, placeholder, size }) {
   // );
   return (
     // main
-    <div
-      className={
-        "mx-[14px] w-full max-w-[750px]" + (show ? "visible" : "invisible")
-      }
-    >
+    <div className={"w-full max-w-[750px]" + (show ? "visible" : "invisible")}>
       {/* search bar */}
       <form className="relative z-10 ">
         {/* search bar container */}
@@ -36,9 +32,9 @@ function SearchBar({ show, placeholder, size }) {
             required="required"
             type="search"
             className={
-              "block py-[8.75px] font-medium lg:font-light leading-[22px] my-0 flex-1 " +
+              "block py-[8.75px] px-[17.5px] font-medium lg:font-light leading-[22px] my-0 flex-1 " +
               "rounded-tl-[6px] rounded-bl-[6px] bg-transparent border-none text-[#1a1a1a] " +
-              "md:py-[12.6px] md:px-[17.5px] w-0 z-10 text-[17px] rounded-[3px] align-middle "
+              "md:py-[12.6px] md:px-[17.5px] w-0 z-10 text-[17px] rounded-[3px] align-middle outline-none "
             }
             style={{ appearance: "textfield" }}
           />
