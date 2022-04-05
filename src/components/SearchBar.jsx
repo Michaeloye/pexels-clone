@@ -19,7 +19,7 @@ function SearchBar({ show, placeholder, size }) {
   // );
   return (
     // main
-    <div className={"w-full max-w-[750px]" + (show ? "visible" : "invisible")}>
+    <div className={"w-full max-w-[750px] " + (show ? "visible" : "invisible")}>
       {/* search bar */}
       <form className="relative z-10 ">
         {/* search bar container */}
