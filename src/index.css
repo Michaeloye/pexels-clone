@@ -41,3 +41,12 @@ body {
   border-bottom-right-radius: 2px;
   z-index: 10;
 }
+
+.main-nav-bar > *:not(:last-child) {
+  margin-right: 30.1px;
+}
+@media (max-width: 849px) {
+  .main-nav-bar > *:not(:last-child) {
+    margin-right: 14px;
+  }
+}
