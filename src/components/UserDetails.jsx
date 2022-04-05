@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import avatar from "../assets/avatar.svg";
+import useScreensize from "../hooks/useScreensize";
 import SmallTriangle from "./SmallTriangle";
 import UserDropdown from "./UserDropdown";
+
 function UserDetails({ pageURL, userImageURL, userName }) {
   const [onHover, setOnHover] = useState(false);
   const [mediumScreen, setMediumScreen] = useState("");
