@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MobileNav from "./components/Navbar/MobileNav";
 import Navbar from "./components/Navbar/Navbar";
 import Tabs from "./components/Tabs";
 import TopSection from "./components/TopSection/TopSection";
@@ -10,10 +11,15 @@ import Leaderboard from "./pages/Leaderboard";
 import Videos from "./pages/Videos";
 
 function App() {
+  const [showMobileNav, setShowMobileNav] = useState(false);
+  function handleMobileNav() {
+    setShowMobileNav((prevState) => !prevState);
+  }
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar />
+        <Navbar handleMobileNav={handleMobileNav} />
+        {showMobileNav && <MobileNav />}
         <TopSection />
         <Tabs />
 
@@ -24,27 +30,6 @@ function App() {
           <Route exact path="/leaderboard" element={<Leaderboard />} />
           <Route exact path="/challenges" element={<Challenges />} />
         </Routes>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
       </BrowserRouter>
     </div>
   );
