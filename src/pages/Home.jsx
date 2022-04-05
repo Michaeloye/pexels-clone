@@ -7,7 +7,6 @@ import slice from "../utilities/slice";
 
 function Home() {
   const [data, setData] = useState([]);
-  const [onHover, setOnHover] = useState(false);
   const [mediumScreen, setMediumScreen] = useState("");
   // for the purpose of responsiveness the width of the page has to be accessed so as determine the...
   // number of photo columns to display for <=1024 2 photo columns are to be displayed else 3 photo columns
