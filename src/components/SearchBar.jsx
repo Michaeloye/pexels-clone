@@ -1,5 +1,6 @@
 import React from "react";
 import { GoSearch } from "react-icons/go";
+import SearchBarDropdown from "./SearchBarDropdown/SearchBarDropdown";
 
 // This component is being used in like two places so the props are for better responsiveness
 function SearchBar({ show, placeholder, size }) {
@@ -42,6 +43,9 @@ function SearchBar({ show, placeholder, size }) {
             <GoSearch size={20} />
           </button>
         </div>
+
+        {/* Searchbar dropdown */}
+        <SearchBarDropdown />
       </form>
     </div>
   );
