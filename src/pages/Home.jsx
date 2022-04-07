@@ -6,6 +6,7 @@ import axios from "axios";
 import slice from "../utilities/slice";
 import range from "../utilities/range";
 import useScroll from "../hooks/useScroll";
+import { nanoid } from "nanoid";
 
 function Home() {
   const mainRef = useRef(null);
@@ -108,24 +109,47 @@ function Home() {
         {/* 2 photo columns for medium screen 3 photo columns for large screen */}
         {mediumScreen ? (
           <>
-            <PhotoColumn images={slice(data[`data${page}`], 0, 20, 2)} />
-            <PhotoColumn images={slice(data[`data${page}`], 1, 20, 2)} last />
+            <div className="flex flex-col">
+              {pageListNum.map((datum) => (
+                <PhotoColumn
+                  key={nanoid()}
+                  images={slice(data[`data${datum}`], 0, 20, 2)}
+                />
+              ))}
+            </div>
+            <div className="flex flex-col">
+              {pageListNum.map((datum) => (
+                <PhotoColumn
+                  key={nanoid()}
+                  images={slice(data[`data${datum}`], 1, 20, 2)}
+                />
+              ))}
+            </div>
           </>
         ) : (
           <>
             <div className="flex flex-col">
               {pageListNum.map((datum) => (
-                <PhotoColumn images={slice(data[`data${datum}`], 0, 20, 3)} />
+                <PhotoColumn
+                  key={nanoid()}
+                  images={slice(data[`data${datum}`], 0, 20, 3)}
+                />
               ))}
             </div>
             <div className="flex flex-col">
               {pageListNum.map((datum) => (
-                <PhotoColumn images={slice(data[`data${datum}`], 1, 20, 3)} />
+                <PhotoColumn
+                  key={nanoid()}
+                  images={slice(data[`data${datum}`], 1, 20, 3)}
+                />
               ))}
             </div>
             <div className="flex flex-col">
               {pageListNum.map((datum) => (
-                <PhotoColumn images={slice(data[`data${datum}`], 2, 20, 3)} />
+                <PhotoColumn
+                  key={nanoid()}
+                  images={slice(data[`data${datum}`], 2, 20, 3)}
+                />
               ))}
             </div>
             {/* <PhotoColumn images={slice(data1, 1, 20, 3)} />
