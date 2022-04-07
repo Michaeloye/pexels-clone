@@ -56,7 +56,9 @@ function SearchBar({ show, placeholder, size }) {
         </div>
 
         {/* Searchbar dropdown */}
-        {searchOnFocus && <SearchBarDropdown />}
+        {searchOnFocus && (
+          <SearchBarDropdown handleFocus={() => setSearchOnFocus(false)} />
+        )}
       </form>
     </div>
   );
