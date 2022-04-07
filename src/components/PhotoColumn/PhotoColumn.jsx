@@ -11,35 +11,37 @@ function PhotoColumn({ images, last }) {
         (last ? "last:mr-0" : "")
       }
     >
-      {images.map((image) => {
-        const pageURL = image["pageURL"];
-        const imageURL = image["webformatURL"];
-        const userImageURL = image["userImageURL"];
-        const userName = image["user"];
-        const views = image["views"];
-        const likes = image["likes"];
-        const downloads = image["downloads"];
-        return (
-          <UserContext.Provider
-            key={pageURL}
-            value={{
-              views,
-              likes,
-              downloads,
-              userName,
-              userImageURL,
-              imageURL,
-            }}
-          >
-            <Photo
-              pageURL={pageURL}
-              imageURL={imageURL}
-              userImageURL={userImageURL}
-              userName={userName}
-            />
-          </UserContext.Provider>
-        );
-      })}
+      {images === ""
+        ? ""
+        : images.map((image) => {
+            const pageURL = image["pageURL"];
+            const imageURL = image["webformatURL"];
+            const userImageURL = image["userImageURL"];
+            const userName = image["user"];
+            const views = image["views"];
+            const likes = image["likes"];
+            const downloads = image["downloads"];
+            return (
+              <UserContext.Provider
+                key={pageURL}
+                value={{
+                  views,
+                  likes,
+                  downloads,
+                  userName,
+                  userImageURL,
+                  imageURL,
+                }}
+              >
+                <Photo
+                  pageURL={pageURL}
+                  imageURL={imageURL}
+                  userImageURL={userImageURL}
+                  userName={userName}
+                />
+              </UserContext.Provider>
+            );
+          })}
     </div>
   );
 }
