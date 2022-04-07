@@ -12,6 +12,7 @@ function SearchBarDropdown() {
           maxHeight: "calc(100vh - 150px)",
           boxShadow:
             "rgba(0, 0, 0, 0.15) 0px 16px 22px -10px, rgba(0, 0, 0, 0.08) 0px 34px 55px 4px, rgba(0, 0, 0, 0.07) 0px 13px 66px 12px",
+          zIndex: "-1",
         }}
       >
         <div className="">
