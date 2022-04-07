@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { GoSearch } from "react-icons/go";
+import filterInput from "../utilities/filterInput";
 import SearchBarDropdown from "./SearchBarDropdown/SearchBarDropdown";
 
 // This component is being used in like two places so the props are for better responsiveness
 function SearchBar({ show, placeholder, size }) {
   const [searchOnFocus, setSearchOnFocus] = useState(false);
+  const [inputValue, setInputValue] = useState("");
 
   function handleBlur(e) {
     // if the blur was because of outside focus
@@ -12,6 +14,12 @@ function SearchBar({ show, placeholder, size }) {
     if (!e.currentTarget.contains(e.relatedTarget)) {
       setSearchOnFocus(false);
     }
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const filteredInput = filterInput(inputValue);
+    window.location.href = `/search/${filteredInput}`;
   }
   return (
     // main
@@ -22,6 +30,7 @@ function SearchBar({ show, placeholder, size }) {
         onFocus={() => setSearchOnFocus(true)}
         // onClick={() => setSearchOnFocus(true)}
         onBlur={(e) => handleBlur(e)}
+        onSubmit={(e) => handleSubmit(e)}
       >
         {/* search bar container */}
         <div
@@ -44,6 +53,7 @@ function SearchBar({ show, placeholder, size }) {
               "focus:bg-white "
             }
             style={{ appearance: "textfield" }}
+            onChange={(e) => setInputValue(e.target.value)}
           />
           <button
             className={
