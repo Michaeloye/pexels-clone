@@ -7,9 +7,11 @@ import slice from "../utilities/slice";
 import range from "../utilities/range";
 import useScroll from "../hooks/useScroll";
 import { nanoid } from "nanoid";
+import { useLocation } from "react-router-dom";
 
 function Home() {
   const mainRef = useRef(null);
+  const location = useLocation().pathname;
 
   const [page, setPage] = useState(1);
   const [pageListNum, setPageListNum] = useState([]);
@@ -40,12 +42,27 @@ function Home() {
   // for fetching data when page num changes
   useEffect(() => {
     setPageListNum(range(1, page));
-    console.log(page);
+    let search = false;
+    let searchQuery = "";
+
+    // when the user searches for an image
+    // 'search/yellow+flower' starting from index 8 which is y
+    if (location.slice(1, 7) === "search") {
+      searchQuery = location.slice(8);
+      search = true;
+    } else {
+      searchQuery = "";
+      search = false;
+    }
     axios
       .get(
-        `https://pixabay.com/api/?key=${
-          import.meta.env.VITE_APIKEY
-        }&image_type=photo&safesearch=true&page=${page}`
+        search
+          ? `https://pixabay.com/api/?key=${
+              import.meta.env.VITE_APIKEY
+            }&image_type=photo&safesearch=true&page=${page}&q=${searchQuery}`
+          : `https://pixabay.com/api/?key=${
+              import.meta.env.VITE_APIKEY
+            }&image_type=photo&safesearch=true&page=${page}`
       )
       .then((res) => {
         // the object in the setData represents this:
@@ -60,7 +77,7 @@ function Home() {
         });
       })
       .catch((err) => console.log(err.message));
-  }, [page]);
+  }, [page, location]);
 
   useEffect(() => {
     if (width <= 1024) {
