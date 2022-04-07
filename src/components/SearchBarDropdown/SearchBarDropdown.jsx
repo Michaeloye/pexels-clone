@@ -1,5 +1,6 @@
 import React from "react";
 import SuggestionItem from "./SuggestionItem";
+import TrendingTopic from "./TrendingTopic";
 
 function SearchBarDropdown() {
   return (
@@ -14,17 +15,35 @@ function SearchBarDropdown() {
         }}
       >
         <div className="">
+          {/* suggestion */}
           <div className="py-[21px] px-[14px] border-b border-[#e8e8e8]">
             <span className="block text-[14px] leading-[18px] mt-0 text-[#1a1a1a] font-normal mb-[14px]">
               Suggestion
             </span>
-            <div>
-              <div className="mb-[14px]">
-                {["flower", "background", "coding"].map((item) => (
-                  <SuggestionItem key={item} title={item} />
-                ))}
-              </div>
+            <div className="-mb-[14px]">
+              {["flower", "background", "coding"].map((item) => (
+                <SuggestionItem key={item} title={item} />
+              ))}
             </div>
+          </div>
+        </div>
+        {/* trending topics */}
+        <div className="py-[21px] px-[14px] border-b border-[#e8e8e8]">
+          <span className="block text-[14px] leading-[18px] mt-0 text-[#1a1a1a] font-normal mb-[14px]">
+            Suggestion
+          </span>
+          <div className="-mb-[14px]">
+            {[
+              "landscape",
+              "sunset",
+              "office",
+              "business",
+              "forest",
+              "food",
+              "book",
+            ].map((topic) => (
+              <TrendingTopic key={topic} topic={topic} />
+            ))}
           </div>
         </div>
       </div>
