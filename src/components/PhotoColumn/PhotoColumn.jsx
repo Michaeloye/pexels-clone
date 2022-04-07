@@ -22,7 +22,14 @@ function PhotoColumn({ images, last }) {
         return (
           <UserContext.Provider
             key={pageURL}
-            value={{ views, likes, downloads, userName, userImageURL }}
+            value={{
+              views,
+              likes,
+              downloads,
+              userName,
+              userImageURL,
+              imageURL,
+            }}
           >
             <Photo
               pageURL={pageURL}
