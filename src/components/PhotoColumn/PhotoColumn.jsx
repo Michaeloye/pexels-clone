@@ -7,7 +7,7 @@ function PhotoColumn({ images, last }) {
   return (
     <div
       className={
-        "block flex-grow flex-shrink mr-[14px] md:mr-[20.3px] " +
+        "block flex-shrink mr-[14px] md:mr-[20.3px] " +
         (last ? "last:mr-0" : "")
       }
     >
