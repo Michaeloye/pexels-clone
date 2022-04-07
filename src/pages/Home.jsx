@@ -29,7 +29,7 @@ function Home() {
     let rect = elem.getBoundingClientRect();
     // console.log(scrollY, rect.y, rect.bottom - 150, height);
     // because measurements are taken from top negating the values is necessary for proper result
-    if (-rect.bottom >= -height - 150 && -rect.bottom <= -height) {
+    if (-rect.bottom >= -height - 250 && -rect.bottom <= -height) {
       setPage((prevState) => prevState + 1);
       // console.log("hello");
     } else {
@@ -37,16 +37,7 @@ function Home() {
     }
   }, [scrollYPosition]);
 
-  // useEffect(() => {
-  //   // once scroll postion gets to this point the showSearchBar is set to true
-  //   console.log(scrollYPosition, height);
-  //   if (scrollYPosition === height - 10) {
-  //     setPage((prevState) => prevState + 1);
-  //   } else {
-  //     null;
-  //   }
-  // }, [scrollYPosition]);
-
+  // for fetching data when page num changes
   useEffect(() => {
     setPageListNum(range(1, page));
     console.log(page);
@@ -99,8 +90,8 @@ function Home() {
                 <PhotoColumn
                   key={nanoid()}
                   images={
-                    data[`data${datum}`] === "undefinded" ||
-                    data[`data${datum}`] === "null"
+                    data[`data${datum}`] === undefined ||
+                    data[`data${datum}`] === null
                       ? ""
                       : slice(data[`data${datum}`], 0, 20, 2)
                   }
@@ -112,8 +103,8 @@ function Home() {
                 <PhotoColumn
                   key={nanoid()}
                   images={
-                    data[`data${datum}`] === "undefinded" ||
-                    data[`data${datum}`] === "null"
+                    data[`data${datum}`] === undefined ||
+                    data[`data${datum}`] === null
                       ? ""
                       : slice(data[`data${datum}`], 1, 20, 2)
                   }
@@ -129,8 +120,8 @@ function Home() {
                 <PhotoColumn
                   key={nanoid()}
                   images={
-                    data[`data${datum}`] === "undefinded" ||
-                    data[`data${datum}`] === "null"
+                    data[`data${datum}`] === undefined ||
+                    data[`data${datum}`] === null
                       ? ""
                       : slice(data[`data${datum}`], 0, 20, 2)
                   }
@@ -142,8 +133,8 @@ function Home() {
                 <PhotoColumn
                   key={nanoid()}
                   images={
-                    data[`data${datum}`] === "undefinded" ||
-                    data[`data${datum}`] === "null"
+                    data[`data${datum}`] === undefined ||
+                    data[`data${datum}`] === null
                       ? ""
                       : slice(data[`data${datum}`], 1, 20, 2)
                   }
@@ -155,8 +146,8 @@ function Home() {
                 <PhotoColumn
                   key={nanoid()}
                   images={
-                    data[`data${datum}`] === "undefinded" ||
-                    data[`data${datum}`] === "null"
+                    data[`data${datum}`] === undefined ||
+                    data[`data${datum}`] === null
                       ? ""
                       : slice(data[`data${datum}`], 2, 20, 2)
                   }
