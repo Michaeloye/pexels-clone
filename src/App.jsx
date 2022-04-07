@@ -29,6 +29,7 @@ function App() {
           <Route exact path="/videos" element={<Videos />} />
           <Route exact path="/leaderboard" element={<Leaderboard />} />
           <Route exact path="/challenges" element={<Challenges />} />
+          <Route path="/search/:query" element={<Home />} />
         </Routes>
       </BrowserRouter>
     </div>
