@@ -17,7 +17,9 @@ function TitleTabs() {
   return (
     <div className="flex justify-between items-center pt-[14px] pb-[7px]">
       <h3 className="block text-lg leading-[26px] font-semibold mt-0 mb-0 text-[#1a1a1a]">
-        Free Stock Photos
+        {location.slice(1, 7) === "search"
+          ? `${location.slice(8)} Photos`
+          : "Free Stock Photos"}
       </h3>
       <div className="relative">
         <div
@@ -30,7 +32,7 @@ function TitleTabs() {
           onMouseLeave={() => handleHover(false)}
         >
           <span className="leading-6 whitespace-nowrap">
-            {location.slice(1) === "" ? "Trending" : "New"}
+            {location.slice(1) === "" ? "New" : "Trending"}
           </span>
           <IoMdArrowDropdown />
           {onHover && (
