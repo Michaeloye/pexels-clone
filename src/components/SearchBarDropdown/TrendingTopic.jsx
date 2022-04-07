@@ -1,16 +1,23 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Img } from "react-image";
 import { Link } from "react-router-dom";
+import filterInput from "../../utilities/filterInput";
 
 function TrendingTopic({ topic }) {
   const [imageURL, setImageURL] = useState("");
-  useEffect(() => {
-    first;
 
-    return () => {
-      second;
-    };
-  }, [third]);
+  useEffect(() => {
+    filteredTopic = filterInput(topic);
+    axios
+      .get(
+        `https://pixabay.com/api/?key=${
+          import.meta.env.VITE_APIKEY
+        }&image_type=photo&safesearch=true&q=${filteredTopic}`
+      )
+      .then((res) => setImageURL(res.data.hits["previewURL"]))
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <Link
