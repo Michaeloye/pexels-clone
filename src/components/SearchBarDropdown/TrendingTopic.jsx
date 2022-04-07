@@ -8,14 +8,14 @@ function TrendingTopic({ topic }) {
   const [imageURL, setImageURL] = useState("");
 
   useEffect(() => {
-    filteredTopic = filterInput(topic);
+    const filteredTopic = filterInput(topic);
     axios
       .get(
         `https://pixabay.com/api/?key=${
           import.meta.env.VITE_APIKEY
         }&image_type=photo&safesearch=true&q=${filteredTopic}`
       )
-      .then((res) => setImageURL(res.data.hits["previewURL"]))
+      .then((res) => setImageURL(res.data.hits[1]["previewURL"]))
       .catch((err) => console.log(err));
   }, []);
 
@@ -26,6 +26,7 @@ function TrendingTopic({ topic }) {
         boxShadow: "rgba(0, 0, 0, 0.08) 0px 3px 5px 0px",
         transition: "all 0.1s ease 0s",
       }}
+      to="/"
     >
       {/* Img from react-image is an optimized image tag that helps in rendering images,
           unloader prop is a fallback, that displays if src image causes an error*/}
