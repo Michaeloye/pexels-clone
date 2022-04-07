@@ -108,6 +108,7 @@ function Home() {
                       ? ""
                       : slice(data[`data${datum}`], 1, 20, 2)
                   }
+                  last
                 />
               ))}
             </div>
@@ -151,6 +152,7 @@ function Home() {
                       ? ""
                       : slice(data[`data${datum}`], 2, 20, 2)
                   }
+                  last
                 />
               ))}
             </div>
