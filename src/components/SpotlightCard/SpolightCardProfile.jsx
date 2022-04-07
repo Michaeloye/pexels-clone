@@ -2,10 +2,7 @@ import avatar from "../../assets/avatar.svg";
 
 function SpotlighCardProfile({ userImageURL, userName, followers }) {
   return (
-    <a
-      href=""
-      className="max-w-full overflow-hidden flex items-center no-underline"
-    >
+    <div className="max-w-full overflow-hidden flex items-center no-underline">
       <div className="mr-[14px] flex items-center justify-center w-10 h-10 rounded-full bg-white">
         <img
           src={userImageURL === "" ? avatar : userImageURL}
@@ -21,7 +18,7 @@ function SpotlighCardProfile({ userImageURL, userName, followers }) {
           {followers} followers
         </div>
       </div>
-    </a>
+    </div>
   );
 }
 
