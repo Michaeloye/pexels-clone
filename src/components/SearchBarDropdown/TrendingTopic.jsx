@@ -4,7 +4,7 @@ import { Img } from "react-image";
 import { Link } from "react-router-dom";
 import filterInput from "../../utilities/filterInput";
 
-function TrendingTopic({ topic }) {
+function TrendingTopic({ topic, handleFocus }) {
   const [imageURL, setImageURL] = useState("");
 
   useEffect(() => {
@@ -27,6 +27,7 @@ function TrendingTopic({ topic }) {
         transition: "all 0.1s ease 0s",
       }}
       to={`/search/${topic}`}
+      onClick={handleFocus}
     >
       {/* Img from react-image is an optimized image tag that helps in rendering images,
           unloader prop is a fallback, that displays if src image causes an error*/}
