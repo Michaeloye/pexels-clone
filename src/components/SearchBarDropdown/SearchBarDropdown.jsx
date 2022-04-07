@@ -2,7 +2,7 @@ import React from "react";
 import SuggestionItem from "./SuggestionItem";
 import TrendingTopic from "./TrendingTopic";
 
-function SearchBarDropdown() {
+function SearchBarDropdown({ handleFocus }) {
   return (
     <div>
       <div
@@ -23,7 +23,11 @@ function SearchBarDropdown() {
             </span>
             <div className="-mb-[14px]">
               {["flower", "background", "coding"].map((item) => (
-                <SuggestionItem key={item} title={item} />
+                <SuggestionItem
+                  key={item}
+                  title={item}
+                  handleFocus={handleFocus}
+                />
               ))}
             </div>
           </div>
@@ -43,7 +47,11 @@ function SearchBarDropdown() {
               "food",
               "book",
             ].map((topic) => (
-              <TrendingTopic key={topic} topic={topic} />
+              <TrendingTopic
+                key={topic}
+                topic={topic}
+                handleFocus={handleFocus}
+              />
             ))}
           </div>
         </div>
