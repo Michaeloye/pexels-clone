@@ -21,12 +21,12 @@ function TrendingTopic({ topic }) {
 
   return (
     <Link
-      className="inline-flex mb-[14px] mr-[14px] text-[15px] leading-[25px] font-bold items-center text-[#5e5e5e] bg-white rounded-[20px] pr-[26px] p-[5.6px] no-underline "
+      className="inline-flex mb-[14px] mr-[14px] text-[15px] leading-[25px] font-bold items-center text-[#5e5e5e] bg-white rounded-[20px] pr-[26px] p-[5.6px] no-underline hover:bg-[#e8e8e8]"
       style={{
         boxShadow: "rgba(0, 0, 0, 0.08) 0px 3px 5px 0px",
         transition: "all 0.1s ease 0s",
       }}
-      to="/"
+      to={`/search/${topic}`}
     >
       {/* Img from react-image is an optimized image tag that helps in rendering images,
           unloader prop is a fallback, that displays if src image causes an error*/}
