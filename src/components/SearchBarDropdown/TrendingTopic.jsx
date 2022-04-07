@@ -15,7 +15,7 @@ function TrendingTopic({ topic }) {
           import.meta.env.VITE_APIKEY
         }&image_type=photo&safesearch=true&q=${filteredTopic}`
       )
-      .then((res) => setImageURL(res.data.hits[1]["previewURL"]))
+      .then((res) => setImageURL(res.data.hits[2]["previewURL"]))
       .catch((err) => console.log(err));
   }, []);
 
