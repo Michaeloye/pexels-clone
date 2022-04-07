@@ -70,9 +70,7 @@ function UserDropdown() {
                   {[0, 1, 2].map((photo) => (
                     <SpotlightCardPhoto
                       key={photo}
-                      imageURL={
-                        "https://images.pexels.com/photos/10251435/pexels-photo-10251435.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=200&w=280"
-                      }
+                      imageURL={user.imageURL}
                       last={photo === 2 ? true : false}
                     />
                   ))}
