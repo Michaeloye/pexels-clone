@@ -3,6 +3,7 @@ import { HiDownload } from "react-icons/hi";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { FiHeart } from "react-icons/fi";
 import UserDetails from "./UserDetails";
+import { Img } from "react-image";
 
 function Photo({ pageURL, imageURL, userImageURL, userName }) {
   const [onImageHover, setOnImageHover] = useState(false);
@@ -18,8 +19,11 @@ function Photo({ pageURL, imageURL, userImageURL, userName }) {
         onMouseLeave={() => handleImageHover(false)}
       >
         <a href={pageURL} className="bg-[rgb(198,198,198)] h-12 max-h-fit">
-          <img
+          {/* Img from react-image is an optimized image tag that helps in rendering images
+           */}
+          <Img
             src={imageURL}
+            loader={<div className="h-40 md:h-64 w-full bg-gray-900"></div>}
             className="block w-full max-w-full h-auto border-0"
           />
         </a>
