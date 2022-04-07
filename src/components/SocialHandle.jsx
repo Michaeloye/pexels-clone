@@ -27,7 +27,7 @@ function SocialHandle({ icon, mobile }) {
     );
   } else {
     return (
-      <div className="py-3 px-6 rounded-sm flex items-center justify-center bg-white text-social-hover-gray hover:bg-social-hover-gray hover:text-white ">
+      <div className="py-3 px-6 rounded-sm flex items-center justify-center bg-white text-social-hover-gray hover:bg-social-hover-gray hover:text-white cursor-pointer ">
         {/* This selects an icon based on the icon prop; if icon is 0 thus icons[0] is used*/}
         {icons[icon]}
       </div>
