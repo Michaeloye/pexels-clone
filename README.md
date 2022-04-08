@@ -13,8 +13,6 @@ The project makes use of [**Pixabay API**](https://pixabay.com/api/docs/) for re
 The project features a search bar to enable the user easily search for images
 Live link: [**Pexels Clone**]()
 
-Add a cover/banner image for your README. **Why?** Because it easily **grabs people's attention** and it **looks cool**(*duh!obviously!*).
-
 # Web Preview
 
 ![Web Preview](https://github.com/Michaeloye/pexels-clone/blob/main/pexels-clone-screenshot.png)
