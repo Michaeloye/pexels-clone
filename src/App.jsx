@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route, HashRouter } from "react-router-dom";
 import MobileNav from "./components/Navbar/MobileNav";
 import Navbar from "./components/Navbar/Navbar";
 import Tabs from "./components/Tabs";
@@ -17,7 +17,7 @@ function App() {
   }
   return (
     <div className="App">
-      <BrowserRouter>
+      <HashRouter>
         <Navbar handleMobileNav={handleMobileNav} />
         {showMobileNav && <MobileNav />}
         <TopSection />
@@ -31,7 +31,7 @@ function App() {
           <Route exact path="/challenges" element={<Challenges />} />
           <Route path="/search/:query" element={<Home />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
