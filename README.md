@@ -1,4 +1,4 @@
-![Banner]('https://pixabay.com/static/img/public/leaderboard_b.png')
+![Banner](https://github.com/Michaeloye/pexels-clone/blob/main/pixabay-banner.png)
 
 # Pexels Clone
 
