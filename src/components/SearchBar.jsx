@@ -19,7 +19,7 @@ function SearchBar({ show }) {
   function handleSubmit(e) {
     e.preventDefault();
     const filteredInput = filterInput(inputValue);
-    window.location.href = `/search/${filteredInput}`;
+    window.location.href = `#/search/${filteredInput}`;
   }
   return (
     // main
