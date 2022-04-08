@@ -10,8 +10,9 @@ This is project revolves around cloning the original [**pexels**](https://www.pe
 
 The project makes use of [**Pixabay API**](https://pixabay.com/api/docs/) for requesting images and details pertaining to the image: the imageURL, user(uploader of image), userImageURL and so much more.
 
-The project features a search bar to enable the user easily search for images
-Live link: [**Pexels Clone**]()
+The project features a search bar to enable the user easily search for images.
+
+Live link: [**Pexels Clone**](https://pexels-clone-michaeloye.vercel.app/)
 
 # Web Preview
 
@@ -19,7 +20,7 @@ Live link: [**Pexels Clone**]()
 
 # Table of contents
 
-- [Project Title](#project-title)
+- [Project Title](#pexels-clone)
 - [Web Preview](#web-preview)
 - [Table of contents](#table-of-contents)
 - [Installation](#installation)
