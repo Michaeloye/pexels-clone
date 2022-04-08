@@ -3,7 +3,10 @@ import Backdrop from "../Backdrop";
 import { IoMdClose, IoMdAddCircleOutline } from "react-icons/io";
 import { FiHeart } from "react-icons/fi";
 import { MdKeyboardArrowDown } from "react-icons/md";
+import { TiEye } from "react-icons/ti";
+import { IoCheckmarkCircle } from "react-icons/io5";
 import avatar from "../../assets/avatar.svg";
+import numFormatter from "../../utilities/numFormatter";
 
 export default function MobileModal({
   handleClose,
@@ -12,11 +15,15 @@ export default function MobileModal({
   likes,
   userImageURL,
   userName,
+  views,
 }) {
   return (
     <Backdrop>
       {/* modal navbar */}
-      <div className="block fixed top-0 left-0 right-0 h-[50px] bg-white z-50 px-4 overflow-y-scroll">
+      <div
+        className="block fixed top-0 left-0 right-0 h-[50px] bg-white z-50 px-4 overflow-y-scroll"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="flex items-center justify-between h-full w-full">
           <IoMdClose
             color={"black"}
@@ -90,6 +97,7 @@ export default function MobileModal({
                 <div className="w-full mt-4">
                   <div className="flex items-stretch shadow">
                     <a
+                      href={pageURL}
                       className={
                         "relative inline-flex items-center justify-center bg-[#05a081] text-[white] " +
                         "border rounded-tl-[3px] rounded-bl-[3px] w-full border-[#05a081] cursor-pointer font-semibold text-center " +
@@ -143,6 +151,36 @@ export default function MobileModal({
                         </h4>
                       </div>
                     </div>
+                  </div>
+                  {/* follow */}
+                  <div className="flex stretch">
+                    <button
+                      className={
+                        "relative inline-flex items-center justify-center text-[14px] font-semibold " +
+                        "cursor-pointer whitespace-nowrap shadow border rounded-[3px] no-underline border-[#1a1a1a26] " +
+                        "bg-white text-[#1a1a1a] py-[6px] px-[13px]"
+                      }
+                    >
+                      Follow
+                    </button>
+                  </div>
+                </div>
+
+                {/* views and free to download */}
+                <div className="flex flex-col items-start justify-center w-full gap-2">
+                  {/* views */}
+                  <div className="flex items-center justify-center gap-2 mt-2">
+                    <TiEye color={"#1a1a1a"} size={14} />
+                    <p className="text-[14px] font-light text-[#1a1a1a] mt-[2px]">
+                      {numFormatter(views)} views
+                    </p>
+                  </div>
+                  {/* free to download */}
+                  <div className="flex items-center justify-center gap-2">
+                    <IoCheckmarkCircle color={"#1a1a1a"} size={14} />
+                    <p className="text-[14px] font-light text-[#1a1a1a]">
+                      Free to use
+                    </p>
                   </div>
                 </div>
               </div>
