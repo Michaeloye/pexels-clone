@@ -18,6 +18,8 @@ Live link: [**Pexels Clone**](https://pexels-clone-michaeloye.vercel.app/)
 
 ![Web Preview](https://github.com/Michaeloye/pexels-clone/blob/main/pexels-clone-screenshot.png)
 
+Live link: [**Pexels Clone**](https://pexels-clone-michaeloye.vercel.app/)
+
 # Table of contents
 
 - [Project Title](#pexels-clone)
