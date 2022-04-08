@@ -21,7 +21,7 @@ Add a cover/banner image for your README. **Why?** Because it easily **grabs peo
 
 # Table of contents
 
-- [Project Title](#title)
+- [Project Title](#project-title)
 - [Web Preview](#web-preview)
 - [Table of contents](#table-of-contents)
 - [Installation](#installation)
