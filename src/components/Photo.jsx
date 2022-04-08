@@ -44,10 +44,19 @@ function Photo({ pageURL, imageURL, userImageURL, userName }) {
               likes={user.likes}
               userImageURL={userImageURL}
               userName={userName}
+              views={user.views}
             />
           )
         : modalOpen && (
-            <ImageModal handleClose={handleModal} image={imageURL} />
+            <ImageModal
+              handleClose={handleModal}
+              image={imageURL}
+              pageURL={pageURL}
+              likes={user.likes}
+              userImageURL={userImageURL}
+              userName={userName}
+              views={user.views}
+            />
           )}
       <article
         className="photo-item-overlay relative block z-0 before:opacity-30 md:before:opacity-0 md:before:hover:opacity-100 "
