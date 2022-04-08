@@ -4,7 +4,7 @@ import filterInput from "../utilities/filterInput";
 import SearchBarDropdown from "./SearchBarDropdown/SearchBarDropdown";
 
 // This component is being used in like two places so the props are for better responsiveness
-function SearchBar({ show, placeholder, size }) {
+function SearchBar({ show }) {
   const [searchOnFocus, setSearchOnFocus] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
@@ -60,6 +60,7 @@ function SearchBar({ show, placeholder, size }) {
               "border-none bg-none rounded-tr-[6px] rounded-br-[6px] flex items-center " +
               "justify-center px-[14px] cursor-pointer z-10 "
             }
+            onClick={(e) => handleSubmit(e)}
           >
             <GoSearch size={20} color={"#5e5e5e"} />
           </button>
