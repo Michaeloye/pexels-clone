@@ -32,7 +32,7 @@ function TitleTabs() {
           onMouseLeave={() => handleHover(false)}
         >
           <span className="leading-6 whitespace-nowrap">
-            {location.slice(1) === ""? "Trending" : "New"}
+            {location.slice(1, 4) === "new"? "New" : "Trending"}
           </span>
           <IoMdArrowDropdown />
           {onHover && (
