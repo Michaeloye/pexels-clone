@@ -141,7 +141,7 @@ function Home() {
                     data[`data${datum}`] === undefined ||
                     data[`data${datum}`] === null
                       ? ""
-                      : slice(data[`data${datum}`], 0, 20, 2)
+                      : slice(data[`data${datum}`], 0, 20, 3)
                   }
                 />
               ))}
@@ -154,7 +154,7 @@ function Home() {
                     data[`data${datum}`] === undefined ||
                     data[`data${datum}`] === null
                       ? ""
-                      : slice(data[`data${datum}`], 1, 20, 2)
+                      : slice(data[`data${datum}`], 1, 20, 3)
                   }
                 />
               ))}
@@ -167,7 +167,7 @@ function Home() {
                     data[`data${datum}`] === undefined ||
                     data[`data${datum}`] === null
                       ? ""
-                      : slice(data[`data${datum}`], 2, 20, 2)
+                      : slice(data[`data${datum}`], 2, 20, 3)
                   }
                   last
                 />
